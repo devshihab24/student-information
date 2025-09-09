@@ -32,25 +32,25 @@
             // print_r($row);
         }
     }
-    
     if(isset($_POST['update_btn'])){
-        $id = $_GET['id'];
+        $id = $_GET['new_id'];
         $firstName = $_POST['f_name'];
         $lastName = $_POST['l_name'];
         $age = $_POST['age'];
         $gpa = $_POST['gpa'];
-        $query = "UPDATE `students` set `first_name` = '$firstName', `last_name` = '$lastName', `age` = '$age', `gpa` = '$gpa' WHERE `id` = $id";
+
+        $query = "UPDATE `students` SET `first_name` = '$firstName', `last_name` = '$lastName', `age` = '$age', `gpa` = '$gpa' WHERE `id` = '$id'";
         $result = mysqli_query($connection, $query);
         if(!$result){
-            die('Result not found.');
+            die("Result not found: " .mysqli_error($connection));
         }
         else{
-            header('Location: ../index.php?update_msg=You have successfully updated student data!');
+            header('Location: ../index.php?update_msg=You successfully updated the data.');
         }
     }
     
     ?>
-    <form action="update.php" method="POST" class=" flex justify-center">
+    <form action="update.php?new_id=<?php echo $id?>" method="POST" class=" flex justify-center">
         <fieldset class="fieldset w-[600px] flex justify-center">
             <legend class="fieldset-legend">Enter first name</legend>
             <input name="f_name" style="width: 600px;" type="text" class="input" value="<?php echo $row['first_name'];?>" />

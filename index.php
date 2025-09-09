@@ -11,6 +11,12 @@ if (isset($_GET['message'])) {
 if (isset($_GET['insert_msg'])) {
     echo "<h6 class='text-xl text-[green] font-semibold text-center pt-4'>" . $_GET['insert_msg'] . "</h6>";
 }
+if (isset($_GET['update_msg'])) {
+    echo "<h6 class='text-xl text-[green] font-semibold text-center pt-4'>" . $_GET['update_msg'] . "</h6>";
+}
+if (isset($_GET['delete_msg'])) {
+    echo "<h6 class='text-xl text-[green] font-semibold text-center pt-4'>" . $_GET['delete_msg'] . "</h6>";
+}
 ?>
 <div style="padding-right: 20px;" class="container flex justify-end py-4 ">
     <button class="common-btn" onclick="my_modal_1.showModal()">ADD STUDENT</button>
